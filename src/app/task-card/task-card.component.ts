@@ -24,12 +24,12 @@ export class TaskCardComponent {
   }
 
   getBorderColorClass() {
-    const randomColorNumber = Math.floor(Math.random() * 8) + 1;
+    const randomColorNumber = Math.floor(Math.random() * 24) + 1;
     this.borderColorClass = `color-task-${randomColorNumber}`;
   }
 
   onEdit(id: number) {
-    this.router.navigate([`/tasks/${id}`]);
+    this.router.navigate([`/tasks/edit`], { queryParams: { id: id } });
   }
 
   onDelete(id: number) {

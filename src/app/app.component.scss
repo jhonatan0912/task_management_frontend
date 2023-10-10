@@ -1,4 +1,12 @@
 .container {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.content {
+  margin-top: 120px !important;
+  flex: 1;
 }
