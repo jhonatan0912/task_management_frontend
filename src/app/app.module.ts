@@ -8,6 +8,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AppRoutingModule,
     SharedModule,
     DragDropModule,
+    FormsModule,
   ],
   declarations: [
     AppComponent,

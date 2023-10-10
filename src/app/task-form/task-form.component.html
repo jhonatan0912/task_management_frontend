@@ -1,3 +1,15 @@
-<p>
-  task-form works!
-</p>
+<div class="form">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input [(ngModel)]="task.title" type="text" id="title" name="title" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea [(ngModel)]="task.description" id="description" name="description" rows="4" required></textarea>
+  </div>
+  <div class="form-group text-center">
+    <button (click)="submit()">
+      {{ type === 'create' ? 'Create' : 'Update' }}
+    </button>
+  </div>
+</div>

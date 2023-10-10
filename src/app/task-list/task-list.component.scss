@@ -4,6 +4,7 @@
   text-align: center;
   margin-top: 24px;
   gap: 2em;
+  padding: 0 24px;
 }
 
 .tasks-list,
@@ -16,6 +17,9 @@
   overflow: hidden;
   width: 100%;
   height: 100%;
+  box-shadow: 0 0 10px #636363;
+  padding: 1em;
+  border-radius: 10px;
 }
 
 
@@ -52,4 +56,5 @@ app-task-card {
 
 .cdk-drag-preview {
   scale: 1.1;
+  cursor: pointer;
 }
