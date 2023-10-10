@@ -22,8 +22,8 @@ export class TasksService implements HttpAdapter<Task[]> {
     throw new Error('Method not implemented.');
   }
 
-  put<T>(body: any): Observable<Task[]> {
-    throw new Error('Method not implemented.');
+  patch(id: number, body: Task): Observable<Task[]> {
+    return this.http.patch<Task[]>(`${this.API_URL}/tasks/${id}`, body);
   }
 
   delete(id: number): Observable<void> {

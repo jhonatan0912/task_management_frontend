@@ -1,8 +1,42 @@
-<section class="tasks-list">
+<main class="container" cdkDropListGroup>
 
-  <app-task-card
-    *ngFor="let task of tasks"
-    [task]="task"
-  />
+  <section>
+    <h1>To do</h1>
 
-</section>
+    <div
+      class="tasks-list"
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="tasks"
+      [cdkDropListConnectedTo]="[doneList]"
+      (cdkDropListDropped)="drop($event)">
+
+      <app-task-card
+        *ngFor="let task of tasks"
+        [task]="task"
+        cdkDrag
+      ></app-task-card>
+    </div>
+  </section>
+
+
+  <section>
+    <h1>Done</h1>
+
+    <div
+      class="done-list"
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList]"
+      (cdkDropListDropped)="drop($event)">
+
+      <app-task-card
+        *ngFor="let task of done"
+        [task]="task"
+        cdkDrag
+      ></app-task-card>
+    </div>
+  </section>
+
+</main>

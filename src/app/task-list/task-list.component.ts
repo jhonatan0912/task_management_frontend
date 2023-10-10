@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TasksService } from '../shared/services/tasks.service';
 import { Task } from '../shared/interfaces/task.interface';
+import { TasksService } from '../shared/services/tasks.service';
+
+import { CdkDragDrop, moveItemInArray, transferArrayItem, } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-list',
@@ -10,20 +12,58 @@ import { Task } from '../shared/interfaces/task.interface';
 export class TaskListComponent implements OnInit {
 
   tasks: Task[] = [];
+  done: Task[] = [];
 
-  constructor(private readonly tasksService: TasksService) { }
+  constructor(
+    private readonly tasksService: TasksService
+  ) { }
 
   ngOnInit() {
+    this.getAllTasks();
+  }
 
+  getAllTasks() {
     this.tasksService.get()
       .subscribe({
         next: (tasks) => {
-          this.tasks = tasks;
+          this.tasks = tasks.filter((task) => !task.completed);
+          this.done = tasks.filter((task) => task.completed);
         },
         error: (error) => {
           throw new Error(error);
         }
       });
   }
+
+  drop(event: CdkDragDrop<Task[]>) {
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      const { id, ...rest } = event.container.data[event.currentIndex];
+      rest.completed = !rest.completed;
+      this.tasksService.patch(id!, rest)
+        .subscribe({
+          next: (task) => {
+            console.log(task);
+          },
+          error: (error) => {
+            console.error('Error while making the PUT request:', error);
+            throw new Error(error);
+          }
+        });
+    }
+  }
+
 
 }
