@@ -1,0 +1,27 @@
+.tasks-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 24px;
+  padding: 0 24px;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .tasks-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tasks-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tasks-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2em;
+  }
+
+}

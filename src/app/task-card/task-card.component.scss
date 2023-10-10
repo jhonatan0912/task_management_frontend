@@ -1,0 +1,20 @@
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-top-width: 5px;
+  border-top-style: solid;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  & .content {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  & .title {
+    font-weight: 700;
+  }
+}
