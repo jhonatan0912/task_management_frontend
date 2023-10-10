@@ -35,6 +35,11 @@ export class TaskListComponent implements OnInit {
       });
   }
 
+  onDelete(deleted: boolean) {
+    if (!deleted) return;
+    this.getAllTasks();
+  }
+
   drop(event: CdkDragDrop<Task[]>) {
 
     if (event.previousContainer === event.container) {

@@ -27,7 +27,7 @@ export class TasksService implements HttpAdapter<Task[]> {
   }
 
   delete(id: number): Observable<void> {
-    throw new Error('Method not implemented.');
+    return this.http.delete<void>(`${this.API_URL}/tasks/${id}`);
   }
 
 }

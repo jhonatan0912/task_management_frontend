@@ -12,9 +12,10 @@
       (cdkDropListDropped)="drop($event)">
 
       <app-task-card
+        cdkDrag
         *ngFor="let task of tasks"
         [task]="task"
-        cdkDrag
+        (onDeleteEmitter)="onDelete($event)"
       ></app-task-card>
     </div>
   </section>
@@ -32,9 +33,10 @@
       (cdkDropListDropped)="drop($event)">
 
       <app-task-card
+        cdkDrag
         *ngFor="let task of done"
         [task]="task"
-        cdkDrag
+        (onDeleteEmitter)="onDelete($event)"
       ></app-task-card>
     </div>
   </section>

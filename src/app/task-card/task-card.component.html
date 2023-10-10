@@ -6,4 +6,16 @@
     <div class="description">{{ task.description }}</div>
   </section>
 
+  <section class="actions">
+    <button
+      class="btn btn-primary"
+      (click)="onEdit(task.id!)">
+      ✏️
+    </button>
+    <button
+      class="btn btn-danger"
+      (click)="onDelete(task.id!)">
+      🗑️
+    </button>
+  </section>
 </article>

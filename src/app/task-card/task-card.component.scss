@@ -18,5 +18,23 @@
 
   & .title {
     font-weight: 700;
+
+  }
+
+  & .actions {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.3em;
+
+      &:hover {
+        scale: 1.1;
+      }
+    }
   }
 }
