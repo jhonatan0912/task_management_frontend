@@ -28,15 +28,17 @@ export class TaskFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tasksService.getById(+this.id)
-      .subscribe({
-        next: (task) => {
-          this.task = task;
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+    if (!isNaN(+this.id)) {
+      this.tasksService.getById(+this.id)
+        .subscribe({
+          next: (task) => {
+            this.task = task;
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
+    }
   }
 
   submit() {

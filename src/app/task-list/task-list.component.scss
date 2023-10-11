@@ -51,9 +51,15 @@
 // EXTRA
 app-task-card {
   height: fit-content !important;
+  border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .cdk-drag-preview {
   scale: 1.1;
-  cursor: pointer;
+  box-shadow: 0 0 10px #636363;
+
 }

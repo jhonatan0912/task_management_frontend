@@ -1,13 +1,17 @@
 .card {
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-top-width: 5px;
-  border-top-style: solid;
   text-align: center;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
   background: #fff;
   min-height: 150px;
+  position: relative;
+
+  & .line-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 
   & .content {
     padding: 1em;
