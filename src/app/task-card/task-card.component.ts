@@ -14,19 +14,10 @@ export class TaskCardComponent {
 
   @Output() onDeleteEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  borderColorClass: string = '';
-
   constructor(
     private readonly router: Router,
     private readonly taskService: TasksService
-  ) {
-    this.getBorderColorClass();
-  }
-
-  getBorderColorClass() {
-    const randomColorNumber = Math.floor(Math.random() * 24) + 1;
-    this.borderColorClass = `color-task-${randomColorNumber}`;
-  }
+  ) { }
 
   onEdit(id: number) {
     this.router.navigate([`/tasks/edit`], { queryParams: { id: id } });
@@ -36,13 +27,11 @@ export class TaskCardComponent {
     this.taskService.delete(id)
       .subscribe({
         next: () => {
-          console.log('Task deleted successfully');
           this.onDeleteEmitter.emit(true);
         },
         error: (error) => {
           this.onDeleteEmitter.emit(false);
-          console.log('Error deleting task', error);
         }
-      })
+      });
   }
 }

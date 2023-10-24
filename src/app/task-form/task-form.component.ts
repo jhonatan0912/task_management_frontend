@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from '../shared/services/tasks.service';
+import { Task } from '../shared/interfaces/task.interface';
 
 @Component({
   selector: 'app-task-form',
@@ -11,9 +12,10 @@ export class TaskFormComponent implements OnInit {
 
   id: string = '';
   type: string = '';
-  task = {
+  task: Task = {
     title: '',
-    description: ''
+    description: '',
+    completed: false,
   };
 
   constructor(
@@ -66,7 +68,7 @@ export class TaskFormComponent implements OnInit {
         error: (err) => {
           console.log(err);
         }
-      })
+      });
   }
 
 }
