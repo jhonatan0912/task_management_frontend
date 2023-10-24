@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TasksService } from '../shared/services/tasks.service';
 import { Task } from '../shared/interfaces/task.interface';
+import { TasksService } from '../shared/services/tasks.service';
 
 @Component({
   selector: 'app-task-form',
@@ -19,9 +19,9 @@ export class TaskFormComponent implements OnInit {
   };
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private tasksService: TasksService,
-    private router: Router,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly tasksService: TasksService,
+    private readonly router: Router,
   ) {
     const { type } = this.activatedRoute.snapshot.params;
     const { id } = this.activatedRoute.snapshot.queryParams;
@@ -53,9 +53,7 @@ export class TaskFormComponent implements OnInit {
         next: () => {
           this.router.navigate(['/tasks']);
         },
-        error: (err) => {
-          console.log(err);
-        }
+        error: (err) => { console.log(err); }
       });
   }
 
@@ -65,9 +63,7 @@ export class TaskFormComponent implements OnInit {
         next: () => {
           this.router.navigate(['/tasks']);
         },
-        error: (err) => {
-          console.log(err);
-        }
+        error: (err) => { console.log(err); }
       });
   }
 
