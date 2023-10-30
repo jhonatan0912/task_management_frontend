@@ -11,7 +11,7 @@ import { TasksService } from '../shared/services/tasks.service';
 export class TaskFormComponent implements OnInit {
 
   id: string = '';
-  type: string = '';
+  action: 'create' | 'edit';
   task: Task = {
     title: '',
     description: '',
@@ -23,15 +23,16 @@ export class TaskFormComponent implements OnInit {
     private readonly tasksService: TasksService,
     private readonly router: Router,
   ) {
-    const { type } = this.activatedRoute.snapshot.params;
+    const { action } = this.activatedRoute.snapshot.params;
     const { id } = this.activatedRoute.snapshot.queryParams;
+
     this.id = id;
-    this.type = type;
+    this.action = action;
   }
 
   ngOnInit() {
-    if (!isNaN(+this.id)) {
-      this.tasksService.getById(+this.id)
+    if (this.id !== null && this.id !== undefined) {
+      this.tasksService.getById(this.id)
         .subscribe({
           next: (task) => {
             this.task = task;
@@ -44,7 +45,7 @@ export class TaskFormComponent implements OnInit {
   }
 
   submit() {
-    this.type === 'create' ? this.create() : this.update();
+    this.action === 'create' ? this.create() : this.update();
   }
 
   create() {
@@ -58,7 +59,7 @@ export class TaskFormComponent implements OnInit {
   }
 
   update() {
-    this.tasksService.patch(+this.id, this.task)
+    this.tasksService.patch(this.id, this.task)
       .subscribe({
         next: () => {
           this.router.navigate(['/tasks']);
@@ -67,4 +68,10 @@ export class TaskFormComponent implements OnInit {
       });
   }
 
+  handleButtonDisabled() {
+    return (
+      this.task.title.length < 3 ||
+      this.task.description.length < 3
+    );
+  }
 }

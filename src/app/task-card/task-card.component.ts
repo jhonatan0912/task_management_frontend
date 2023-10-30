@@ -19,11 +19,11 @@ export class TaskCardComponent {
     private readonly taskService: TasksService
   ) { }
 
-  onEdit(id: number) {
+  onEdit(id: string) {
     this.router.navigate([`/tasks/edit`], { queryParams: { id: id } });
   }
 
-  onDelete(id: number) {
+  onDelete(id: string) {
     this.taskService.delete(id)
       .subscribe({
         next: () => {

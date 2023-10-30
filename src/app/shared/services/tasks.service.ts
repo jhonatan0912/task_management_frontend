@@ -20,7 +20,7 @@ export class TasksService implements HttpCrudAdapter<Task> {
     return this.http.get<Task[]>(`${this.API_URL}/tasks`);
   }
 
-  getById(id: number): Observable<Task> {
+  getById(id: string): Observable<Task> {
     return this.http.get<Task>(`${this.API_URL}/tasks/${id}`);
   }
 
@@ -28,11 +28,11 @@ export class TasksService implements HttpCrudAdapter<Task> {
     return this.http.post<Task>(`${this.API_URL}/tasks`, body);
   }
 
-  patch(id: number, body: any): Observable<Task> {
+  patch(id: string, body: any): Observable<Task> {
     return this.http.patch<Task>(`${this.API_URL}/tasks/${id}`, body);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.API_URL}/tasks/${id}`);
   }
 }

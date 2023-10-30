@@ -8,7 +8,7 @@ const routes: Routes = [
     path: 'tasks',
     children: [
       { path: '', component: TaskListComponent },
-      { path: ':type', component: TaskFormComponent },
+      { path: ':action', component: TaskFormComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ],
   },
